@@ -28,10 +28,19 @@ void test_barcode_normal(void)
     lv_color_t dark_color = lv_color_black();
     lv_color_t light_color = lv_color_white();
     uint16_t scale = 2;
+    lv_dir_t direction = LV_DIR_HOR;
+
+    if(direction == LV_DIR_HOR) {
+        lv_obj_set_height(barcode, 50);
+    }
+    else {
+        lv_obj_set_width(barcode, 50);
+    }
 
     lv_barcode_set_dark_color(barcode, dark_color);
     lv_barcode_set_light_color(barcode, light_color);
     lv_barcode_set_scale(barcode, scale);
+    lv_barcode_set_direction(barcode, direction);
 
     TEST_ASSERT_EQUAL_COLOR(lv_barcode_get_dark_color(barcode), dark_color);
     TEST_ASSERT_EQUAL_COLOR(lv_barcode_get_light_color(barcode), light_color);
